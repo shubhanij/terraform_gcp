@@ -1,0 +1,6 @@
+instance_name			= "test-instance-name"
+machine_type			= "f1-micro"
+project                 = "my-user-project-302507"
+zone					= "us-central1-c"
+network         		= "default"
+service_account         = "compute-engine-admin@my-user-project-302507.iam.gserviceaccount.com"
