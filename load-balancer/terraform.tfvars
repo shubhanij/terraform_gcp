@@ -1,0 +1,6 @@
+project                 = "my-user-project-302507"
+region					= "us-central1"
+zone                    = "us-central1-c"
+compute_forwarding_rule = "test-compute-forwarding-rule"
+backend_service		    = "test-backend-service"
+compute_health_check	= "test-compute-health-check"
