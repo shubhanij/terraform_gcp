@@ -1,0 +1,8 @@
+project					= "my-user-project-302507"
+region					= "us-central1"
+zone					= "us-central1-c"
+bigtable_instance_name	= "tf-instance"
+cluster_id				= "tf-instance-cluster"
+nodes_count				= "3"
+storage_type			= "HDD"
+bigtable_table_name		= "tf-table"
