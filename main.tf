@@ -4,34 +4,12 @@ provider "google" {
   zone = var.zone
 }
 
-resource "google_dns_record_set" "t-google-dns-record-set" {
-  name = "frontend.${google_dns_managed_zone.t-google-dns-managed-zone.dns_name}"
-  type = "A"
-  ttl  = 300
+resource "google_bigquery_dataset" "t-google-bigquery-dataset" {
+  dataset_id                  = var.dataset_id
+  location                    = var.bigquery_dataset_location
+  default_table_expiration_ms = 3600000
 
-  managed_zone = google_dns_managed_zone.t-google-dns-managed-zone.name
-
-  rrdatas = [google_compute_instance.t-google-compute-instance.network_interface[0].access_config[0].nat_ip]
-}
-
-resource "google_compute_instance" "t-google-compute-instance" {
-  name         = var.instance_name
-  machine_type = var.machine_type
-
-  boot_disk {
-    initialize_params {
-      image = var.image
-    }
+  labels = {
+    env = "test"
   }
-
-  network_interface {
-    network = "default"
-    access_config {
-    }
-  }
-}
-
-resource "google_dns_managed_zone" "t-google-dns-managed-zone" {
-  name     = var.dns_managed_zone
-  dns_name = var.dns_name
 }

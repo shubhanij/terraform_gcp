@@ -13,28 +13,12 @@ variable "zone" {
 	description	= "The zone that the machine should be created in"
 }
 
-variable "instance_name" {
+variable "dataset_id" {
 	type		= string
-	description	= "Name of the Instance"
+	description	= "Bigquery Dataset id"
 }
 
-variable "machine_type" {
+variable "bigquery_dataset_location" {
 	type 		= string
-	description	= "Machine type of VM"
-	default	 	= "f1-micro"
-}
-
-variable "image" {
-	type 		= string
-	description	= "The image from which to initialize this disk."
-}
-
-variable "dns_managed_zone" {
-	type 		= string
-	description	= "DNS managed zone name"
-}
-
-variable "dns_name" {
-	type 		= string
-	description	= "DNS name"
+	description	= "Bigquery Dataset location"
 }
