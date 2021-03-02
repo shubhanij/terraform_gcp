@@ -4,26 +4,12 @@ provider "google" {
   zone = var.zone
 }
 
-resource "google_bigtable_instance" "t-google-bigtable-instance" {
-  name = var.bigtable_instance_name
-
-  cluster {
-    cluster_id   = var.cluster_id
-    num_nodes    = var.nodes_count
-    storage_type = var.storage_type
+resource "google_ml_engine_model" "t-google-ml-engine-model" {
+  name        = var.ml_engine_model_name
+  description = "My model"
+  labels = {
+    function = "analysis"
   }
-
-  lifecycle {
-    prevent_destroy = true
-  }
-}
-
-resource "google_bigtable_table" "t-google-bigtable-table" {
-  name          = var.bigtable_table_name
-  instance_name = google_bigtable_instance.t-google-bigtable-instance.name
-  split_keys    = ["a", "b", "c"]
-
-  lifecycle {
-    prevent_destroy = true
-  }
+  online_prediction_logging         = false
+  online_prediction_console_logging = false
 }
