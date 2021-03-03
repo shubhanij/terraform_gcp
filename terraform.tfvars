@@ -1,0 +1,8 @@
+project			    = "my-user-project-302507"
+region				= "us-central1"
+zone				= "us-central1-c"
+display_name	    = "dialogflow-agent"
+time_zone           = "America/New_York"
+match_mode          = "MATCH_MODE_ML_ONLY"
+api_version         = "API_VERSION_V2_BETA_1"
+tier                = "TIER_STANDARD"
