@@ -1,0 +1,6 @@
+project					        = "my-user-project-302507"
+region					        = "us-central1"
+zone					        = "us-central1-c"
+pubsub_topic_name               = "test-topic"
+pubsub_topic_dead_letter        = "test-topic-dead-letter"
+pubsub_subscription_name        = "test-subscription"
