@@ -1,0 +1,8 @@
+project					        = "my-user-project-302507"
+region					        = "us-central1"
+zone					        = "us-central1-c"
+service_account_id              = "service-account-id"
+service_account_display_name    = "Service Account"
+cluster_name                    = "test-gke-cluster"
+node_pool_name                  = "my-node-pool"
+machine_type                    = "e2-medium"
