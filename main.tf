@@ -8,31 +8,25 @@ resource "google_pubsub_topic" "t-google-pubsub-topic" {
   name = var.pubsub_topic_name
 }
 
-resource "google_bigquery_dataset" "t-google-bigquery-dataset" {
-  dataset_id = var.bigquery_dataset_id
-  location = var.bigquery_dataset_location
-  default_table_expiration_ms = 3600000
+resource "google_storage_bucket" "t-google-storage-bucket-data-dump" {
+  name  = var.dataflow_data_dump_bucket
 }
 
-resource "google_storage_bucket" "t-google-storage-bucket" {
-  name=var.dataflow_template_bucket
-}
+resource "google_pubsub_subscription" "t-google-pubsub-subscription" {
+  name  = var.pubsub_subscription_name
+  topic = google_pubsub_topic.t-google-pubsub-topic.name
 
-resource "google_bigquery_table" "t-google-bigquery-table" {
-  dataset_id= google_bigquery_dataset.t-google-bigquery-dataset.id
-  table_id =var.bigquery_table_id
 }
-
 
 resource "google_dataflow_job" "t-google-dataflow-job" {
 
   name= var.dataflow_job_name 
-  template_gcs_path = "path-to-template"
-  temp_gcs_location = "directory-path"
+  template_gcs_path = "gs://dataflow-templates/latest/Cloud_PubSub_to_Cloud_PubSub"
+  temp_gcs_location = "gs://test-temp-data-dump-bucket7/"
 
   network = var.network
   parameters = {
-    inputTopic = "google_pubsub_topic.t-google-pubsub-topic.id"
-    outputTableSpec = "google_bigquery_table.t-google-bigquery-table.id"
+    inputSubscription = google_pubsub_subscription.t-google-pubsub-subscription.id
+    outputTopic = google_pubsub_topic.t-google-pubsub-topic.id
   }
 }
