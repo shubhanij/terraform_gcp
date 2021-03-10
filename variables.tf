@@ -25,15 +25,15 @@ variable "service_account_display_name" {
 
 variable "cluster_name" {
 	type 		= string
-	description	= "Region in which any regional resources in an instance template belongs"
+	description	= "gke cluster name"
 }
 
 variable "node_pool_name" {
 	type 		= string
-	description	= "The zone that the machine should be created in"
+	description	= "node pool name for gke cluster"
 }
 
 variable "machine_type" {
 	type 		= string
-	description	= "The zone that the machine should be created in"
+	description	= "Machine type for gke node"
 }
