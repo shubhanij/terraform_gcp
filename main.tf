@@ -22,7 +22,7 @@ resource "google_dataflow_job" "t-google-dataflow-job" {
 
   name= var.dataflow_job_name 
   template_gcs_path = "gs://dataflow-templates/latest/Cloud_PubSub_to_Cloud_PubSub"
-  temp_gcs_location = "gs://test-temp-data-dump-bucket7/"
+  temp_gcs_location = "gs://${var.dataflow_data_dump_bucket}/"
 
   network = var.network
   parameters = {
